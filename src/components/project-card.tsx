@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import type { Project } from "@/data/site";
+import type { Project } from "@/types/project";
 
 type ProjectCardProps = {
   project: Project;
@@ -8,27 +8,41 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="flex h-full flex-col justify-between rounded-[2rem] border border-stone-200 bg-white p-6 shadow-[0_24px_80px_-48px_rgba(28,25,23,0.45)] transition hover:-translate-y-1">
-      <div className="space-y-4">
-        <h3 className="text-xl font-semibold text-stone-900">{project.title}</h3>
-        <p className="text-sm leading-7 text-stone-600">{project.description}</p>
+    <article className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[1.75rem] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),rgba(255,255,255,0.02))] p-6 shadow-[var(--shadow-soft)] transition duration-500 hover:-translate-y-1.5 hover:border-[var(--border-strong)] hover:shadow-[var(--shadow-strong)]">
+      <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(59,130,246,0.55),transparent)] opacity-0 transition duration-500 group-hover:opacity-100" />
+      <div className="space-y-5">
+        <div className="inline-flex rounded-full border border-[var(--border)] bg-[var(--panel-strong)] px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-[var(--muted)]">
+          Case Study
+        </div>
+        <h3 className="text-2xl font-semibold tracking-[-0.04em] text-[var(--foreground)]">{project.name}</h3>
+        <p className="text-sm leading-7 text-[var(--muted)]">{project.description}</p>
         <div className="flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
             <span
               key={tech}
-              className="rounded-full bg-stone-100 px-3 py-1 text-xs font-medium tracking-wide text-stone-700 uppercase"
+              className="rounded-full border border-[var(--border)] bg-[var(--surface-code)] px-3 py-1 text-xs font-medium tracking-wide text-[var(--foreground-soft)] uppercase"
             >
               {tech}
             </span>
           ))}
         </div>
       </div>
-      <Link
-        href={project.href}
-        className="mt-6 inline-flex items-center text-sm font-semibold text-stone-900 underline decoration-amber-600 underline-offset-4"
-      >
-        查看项目
-      </Link>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <Link
+          href={project.githubLink}
+          className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--panel-strong)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition duration-300 hover:border-[var(--border-strong)] hover:bg-[var(--surface-code)]"
+        >
+          GitHub
+        </Link>
+        {project.demoLink ? (
+          <Link
+            href={project.demoLink}
+            className="inline-flex items-center rounded-full bg-[var(--foreground)] px-4 py-2 text-sm font-semibold text-[var(--background)] transition duration-300 hover:opacity-90"
+          >
+            Live Demo
+          </Link>
+        ) : null}
+      </div>
     </article>
   );
 }

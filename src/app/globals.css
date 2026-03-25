@@ -1,7 +1,37 @@
 @import "tailwindcss";
 
 :root {
+  --background: #f5f7fb;
+  --bg-header: rgba(245, 247, 251, 0.72);
+  --foreground: #0f172a;
+  --foreground-soft: #1e293b;
+  --muted: #64748b;
+  --accent: #4f46e5;
+  --border: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(79, 70, 229, 0.28);
+  --panel: rgba(255, 255, 255, 0.74);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --surface-code: rgba(15, 23, 42, 0.04);
+  --shadow-soft: 0 24px 80px -48px rgba(15, 23, 42, 0.32);
+  --shadow-strong: 0 32px 120px -48px rgba(59, 130, 246, 0.32);
   color-scheme: light;
+}
+
+.dark {
+  --background: #020617;
+  --bg-header: rgba(2, 6, 23, 0.72);
+  --foreground: #e2e8f0;
+  --foreground-soft: #cbd5e1;
+  --muted: #94a3b8;
+  --accent: #818cf8;
+  --border: rgba(148, 163, 184, 0.16);
+  --border-strong: rgba(129, 140, 248, 0.38);
+  --panel: rgba(15, 23, 42, 0.72);
+  --panel-strong: rgba(15, 23, 42, 0.9);
+  --surface-code: rgba(148, 163, 184, 0.08);
+  --shadow-soft: 0 32px 120px -60px rgba(2, 6, 23, 0.9);
+  --shadow-strong: 0 32px 120px -48px rgba(79, 70, 229, 0.28);
+  color-scheme: dark;
 }
 
 * {
@@ -10,10 +40,17 @@
 
 html {
   scroll-behavior: smooth;
+  background:
+    radial-gradient(circle at top, rgba(99, 102, 241, 0.14), transparent 26%),
+    radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.1), transparent 18%),
+    var(--background);
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
+  background: transparent;
+  color: var(--foreground);
   font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
 }
 
@@ -23,6 +60,6 @@ a {
 }
 
 ::selection {
-  background: #f59e0b;
-  color: #1c1917;
+  background: rgba(79, 70, 229, 0.28);
+  color: var(--foreground);
 }

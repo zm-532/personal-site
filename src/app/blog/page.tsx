@@ -17,23 +17,28 @@ const posts = [
 
 export default function BlogPage() {
   return (
-    <div className="mx-auto max-w-6xl px-6 py-14 sm:py-20">
+    <div className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
       <div className="space-y-10">
         <SectionTitle
           eyebrow="Blog"
           title="博客占位"
-          description="当前页面用于占位，后续可以接入 MDX、Contentlayer 或静态 JSON 数据。"
+          description="当前页面用于占位，后续可以接入 MDX、Contentlayer 或静态 JSON 数据，逐步沉淀技术文章与项目复盘。"
         />
         <div className="grid gap-6 lg:grid-cols-2">
-          {posts.map((post) => (
-            <article key={post.title} className="rounded-[2rem] border border-stone-200 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-semibold text-stone-900">{post.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-stone-600">{post.excerpt}</p>
+          {posts.map((post, index) => (
+            <article
+              key={post.title}
+              className="group rounded-[1.75rem] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),rgba(255,255,255,0.02))] p-6 shadow-[var(--shadow-soft)] transition duration-500 hover:-translate-y-1 hover:border-[var(--border-strong)]"
+            >
+              <p className="text-xs uppercase tracking-[0.24em] text-[var(--muted)]">Post {String(index + 1).padStart(2, "0")}</p>
+              <h3 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-[var(--foreground)]">{post.title}</h3>
+              <p className="mt-4 text-sm leading-7 text-[var(--muted)]">{post.excerpt}</p>
               <Link
                 href={post.href}
-                className="mt-6 inline-flex text-sm font-semibold text-amber-700 underline underline-offset-4"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--foreground)] transition duration-300 group-hover:gap-3"
               >
                 Coming soon
+                <span aria-hidden="true">→</span>
               </Link>
             </article>
           ))}
