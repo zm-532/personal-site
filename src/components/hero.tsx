@@ -42,9 +42,10 @@ export function Hero({ name, role, intro, summary }: HeroProps) {
           <div className="flex flex-wrap gap-4">
             <Link
               href="/projects"
-              className="inline-flex items-center rounded-full bg-[var(--foreground)] px-6 py-3 text-sm font-semibold text-[var(--background)] transition duration-300 hover:-translate-y-0.5 hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,#4f46e5_0%,#2563eb_100%)] px-6 py-3 text-sm font-semibold text-white shadow-[0_16px_40px_-18px_rgba(37,99,235,0.65)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_48px_-18px_rgba(79,70,229,0.72)]"
             >
-              View Projects
+              项目展示
+              <span aria-hidden="true">-&gt;</span>
             </Link>
             <Link
               href="/contact"

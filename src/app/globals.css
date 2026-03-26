@@ -63,3 +63,40 @@ a {
   background: rgba(79, 70, 229, 0.28);
   color: var(--foreground);
 }
+
+.hljs {
+  color: var(--foreground-soft);
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #8b5cf6;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-section,
+.hljs-attribute {
+  color: #0ea5e9;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #f97316;
+}
+
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #14b8a6;
+}
