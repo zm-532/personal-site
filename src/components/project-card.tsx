@@ -16,6 +16,20 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
         <h3 className="text-2xl font-semibold tracking-[-0.04em] text-[var(--foreground)]">{project.name}</h3>
         <p className="text-sm leading-7 text-[var(--muted)]">{project.description}</p>
+
+        {project.highlights?.length ? (
+          <div className="flex flex-wrap gap-2">
+            {project.highlights.map((highlight) => (
+              <span
+                key={highlight}
+                className="rounded-full border border-[var(--border)] bg-[var(--panel-strong)] px-3 py-1 text-xs text-[var(--foreground-soft)]"
+              >
+                {highlight}
+              </span>
+            ))}
+          </div>
+        ) : null}
+
         <div className="flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
             <span
@@ -27,6 +41,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
       </div>
+
       <div className="mt-8 flex flex-wrap gap-3">
         <Link
           href={project.githubLink}

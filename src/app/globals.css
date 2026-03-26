@@ -38,6 +38,12 @@
   box-sizing: border-box;
 }
 
+*,
+*::before,
+*::after {
+  border-color: var(--border);
+}
+
 html {
   scroll-behavior: smooth;
   background:
@@ -52,6 +58,11 @@ body {
   background: transparent;
   color: var(--foreground);
   font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {
@@ -99,4 +110,37 @@ a {
 .hljs-built_in,
 .hljs-builtin-name {
   color: #14b8a6;
+}
+
+@keyframes sectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-reveal {
+  opacity: 0;
+  animation: sectionReveal 0.7s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .section-reveal {
+    opacity: 1;
+    animation: none;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
